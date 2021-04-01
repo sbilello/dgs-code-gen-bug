@@ -1,0 +1,4 @@
+type JsonMappingTest  {
+    movies: [JSON]
+}
+scalar JSON

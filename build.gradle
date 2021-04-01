@@ -1,0 +1,35 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'com.netflix.dgs.codegen' version '4.4.2'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compile 'com.graphql-java:graphql-java-extended-scalars:16.0.0'
+    implementation "com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter:latest.release"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+generateJava{
+    schemaPaths = ["${projectDir}/src/main/resources/schema"] // List of directories containing schema files
+    packageName = 'us.test.graphql.settings.graph.schema' // The package name to use to generate sources
+    generateClient = true // Enable generating the type safe query API
+    typeMapping = ["JSON" : "graphql.Internal.JsonScalar"]
+}
+
