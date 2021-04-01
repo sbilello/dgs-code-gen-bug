@@ -16,7 +16,6 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     compile 'com.graphql-java:graphql-java-extended-scalars:16.0.0'
     implementation "com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter:latest.release"
